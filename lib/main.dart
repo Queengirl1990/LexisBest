@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-Color lexiBrown = Color(0xFF837471); // lexiBrown-Farbe definiert
-Color backgroundGrey = Color(0xFFF3F3F3); // backgroundGrey-Farbe definiert
+Color lexiBrown = Color(0xFF837471);
+Color backgroundGrey = Color(0xFFF3F3F3);
 
 void main() {
   runApp(MyApp());
@@ -27,19 +27,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(  // Leere AppBar hinzugefügt
+      appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       backgroundColor: backgroundGrey,
-      body: Center( // StatusBoxen in der Mitte zentriert
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            StatusBox('Hallo Olivia!'),
-            StatusBox('Meine Tiere'),
-            StatusBox('Wichtige Termine'),
-            StatusBox('Empfehlungen'),
+            StatusBox('Hallo Olivia!', height: 100, width: 320),
+            SizedBox(height: 16),
+            StatusBox('Meine Tiere', height: 120, width: 320),
+            SizedBox(height: 16),
+            StatusBox('Wichtige Termine', height: 80, width: 320),
+            SizedBox(height: 16),
+            StatusBox('Empfehlungen', height: 150, width: 320),
           ],
         ),
       ),
@@ -77,18 +80,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class StatusBox extends StatelessWidget {
   final String text;
+  final double height;
+  final double width;
 
-  StatusBox(this.text);
+  StatusBox(this.text, {this.height = 100, this.width = 320});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
-      color: Colors.white, // Hintergrundfarbe der StatusBox auf Weiß gesetzt
-      child: Text(
-        text,
-        style: TextStyle(
-          color: Colors.black, // Textfarbe auf Schwarz gesetzt
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
     );
