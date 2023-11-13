@@ -10,14 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: LoadingPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class LoadingPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoadingPageState createState() => _LoadingPageState();
 }
-
-
