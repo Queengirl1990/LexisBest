@@ -72,7 +72,15 @@ class MyApp extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
+                      Text(
+                        'Login mit Google oder Apple ID',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.0,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -87,7 +95,7 @@ class MyApp extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 15.0),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
@@ -105,7 +113,7 @@ class MyApp extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 15.0),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Username',
@@ -149,7 +157,7 @@ class MyApp extends StatelessWidget {
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
-                            // Registrierungsprozess 
+                            // Registrierungsprozess
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
@@ -164,29 +172,33 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10.0),
-                      CheckboxListTile(
-                        title: Text(
-                          'Ich stimme den AGBs zu',
-                          style: TextStyle(color: Colors.black, fontSize: 12.0),
-                        ),
-                        value: false, 
-                        onChanged: (bool? value) {
-                          // Aktion der Checkbox 
-                        },
-                        controlAffinity: ListTileControlAffinity.leading,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 0.0),
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: false,
+                            onChanged: (bool? value) {
+                              // Aktion der Checkbox
+                            },
+                          ),
+                          Text(
+                            'Ich stimme den AGBs zu',
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),
+                          ),
+                        ],
                       ),
-                      CheckboxListTile(
-                        title: Text(
-                          'Ich stimme der Datenschutzerklärung zu',
-                          style: TextStyle(color: Colors.black, fontSize: 12.0),
-                        ),
-                        value: false, 
-                        onChanged: (bool? value) {
-                          // Aktion implementieren
-                        },
-                        controlAffinity: ListTileControlAffinity.leading,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 0.0),
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: false,
+                            onChanged: (bool? value) {
+                              // Aktion implementieren
+                            },
+                          ),
+                          Text(
+                            'Ich stimme der Datenschutzerklärung zu',
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),
+                          ),
+                        ],
                       ),
                     ],
                   ),
