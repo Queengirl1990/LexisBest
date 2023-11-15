@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:lexis_best_app/datenspeicher/styles.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({Key? key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -24,7 +24,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -38,18 +38,114 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             CustomStatusBox(
               text: 'Hallo Olivia!',
-              subText: 'Oli, Buddy & Chrissy', 
+              subText: 'Oli, Buddy & Chrissy',
               height: 100,
-              width: 320,
-              leftImage: 'assets/images/ava.png',
-              rightImage: 'assets/images/futter.png',
+              avaImage: Image.asset('assets/images/ava.png'),
+              futterImage: Image.asset('assets/images/futter.png'),
+              buttons: const [],
             ),
             const SizedBox(height: 16),
-            StatusBox('Meine Tiere', height: 120, width: 320),
+            CustomStatusBox(
+              text: 'Meine Tiere',
+              subText: '',
+              height: 120,
+              avaImage: const CustomAppButton(),
+              futterImage: const SizedBox.shrink(),
+              buttons: [
+                CustomImageButton(
+                  icon: Icons.add,
+                  onPressed: () {
+                    // Hier die Funktion für den Plus-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/oli.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Oli-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/buddy.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Buddy-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/chrissy.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Chrissy-Button hinzufügen
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 16),
-            StatusBox('Wichtige Termine', height: 120, width: 320),
+            CustomStatusBox(
+              text: 'Wichtige Termine',
+              subText: '',
+              height: 120,
+              avaImage: const CustomAppButton(),
+              futterImage: const SizedBox.shrink(),
+              buttons: [
+                CustomImageButton(
+                  icon: Icons.add,
+                  onPressed: () {
+                    // Hier die Funktion für den Plus-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/oli.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Oli-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/buddy.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Buddy-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/chrissy.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Chrissy-Button hinzufügen
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 16),
-            StatusBox('Empfehlungen', height: 120, width: 320),
+            CustomStatusBox(
+              text: 'Empfehlungen',
+              subText: '',
+              height: 120,
+              avaImage: const CustomAppButton(),
+              futterImage: const SizedBox.shrink(),
+              buttons: [
+                CustomImageButton(
+                  icon: Icons.add,
+                  onPressed: () {
+                    // Hier die Funktion für den Plus-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/bettchen.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/kratzbaum.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                  },
+                ),
+                CustomImageButton(
+                  imagePath: 'assets/images/nagerhaus.png',
+                  onPressed: () {
+                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -87,26 +183,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class CustomStatusBox extends StatelessWidget {
   final String text;
-  final String subText; // zweite Textzeile
+  final String subText;
   final double height;
-  final double width;
-  final String leftImage;
-  final String rightImage;
+  final Widget avaImage;
+  final Widget futterImage;
+  final List<CustomImageButton> buttons;
 
-  CustomStatusBox({
+  const CustomStatusBox({
     required this.text,
     required this.subText,
-    this.height = 100,
-    this.width = 320,
-    required this.leftImage,
-    required this.rightImage,
-  });
+    required this.height,
+    required this.avaImage,
+    required this.futterImage,
+    required this.buttons,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      width: 320,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -115,32 +211,29 @@ class CustomStatusBox extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, 
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  leftImage,
-                  height: 60,
-                  width: 60,
-                ),
-                SizedBox(width: 8), 
+                avaImage,
+                const SizedBox(width: 8),
                 Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center, 
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         text,
                         style: const TextStyle(
                           color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                       Text(
@@ -152,14 +245,16 @@ class CustomStatusBox extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 8), // Abstand zwischen Text und Bild
-                Image.asset(
-                  rightImage,
-                  height: 40,
-                  width: 40,
-                ),
+                const SizedBox(width: 8),
+                futterImage,
               ],
             ),
+            const SizedBox(height: 8),
+            if (buttons.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: buttons,
+              ),
           ],
         ),
       ),
@@ -167,37 +262,75 @@ class CustomStatusBox extends StatelessWidget {
   }
 }
 
-class StatusBox extends StatelessWidget {
-  final String text;
-  final double height;
-  final double width;
-
-  StatusBox(this.text, {this.height = 100, this.width = 320});
+class CustomAppButton extends StatelessWidget {
+  const CustomAppButton({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      width: 40,
+      height: 40,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.black,
-          ),
+      child: const Center(
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
         ),
+      ),
+    );
+  }
+}
+
+class CustomImageButton extends StatelessWidget {
+  final IconData? icon;
+  final String? imagePath;
+  final VoidCallback onPressed;
+
+  const CustomImageButton({
+    Key? key,
+    this.icon,
+    this.imagePath,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: IconButton(
+        icon: icon != null
+            ? Icon(icon, color: Colors.black)
+            : Image.asset(
+                imagePath!,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+              ),
+        onPressed: onPressed,
       ),
     );
   }

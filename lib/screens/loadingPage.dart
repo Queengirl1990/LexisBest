@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:lexis_best_app/datenspeicher/styles.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: LoadingPage(),
     );
   }
 }
 
 class LoadingPage extends StatefulWidget {
+  const LoadingPage({super.key});
+
   @override
   _LoadingPageState createState() => _LoadingPageState();
 }
@@ -24,7 +28,7 @@ class _LoadingPageState extends State<LoadingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/lexi.jpg'),
             fit: BoxFit.fill,
@@ -33,8 +37,8 @@ class _LoadingPageState extends State<LoadingPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
-            Padding(
+            const SizedBox(height: 50),
+            const Padding(
               padding: EdgeInsets.only(left: 20),
               child: Text(
                 "Lexis Best",
@@ -44,7 +48,7 @@ class _LoadingPageState extends State<LoadingPage> {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 20, top: 10),
               child: Text(
                 "Nur das beste für unsere Lieblinge",
@@ -64,13 +68,13 @@ class _LoadingPageState extends State<LoadingPage> {
                       // Aktion einfügen
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: lexiBlack,
+                      backgroundColor: lexiBlack,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Start",
                       style: TextStyle(
                         color: Colors.white,

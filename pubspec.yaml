@@ -66,6 +66,9 @@ flutter:
     - assets/images/oli.png
     - assets/images/buddy.png
     - assets/images/chrissy.png
+    - assets/images/bettchen.png
+    - assets/images/kratzbaum.png
+    - assets/images/nagerhaus.png    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

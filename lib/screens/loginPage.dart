@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lexis_best_app/datenspeicher/styles.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
                             // Login-Prozess 
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.black,
+                            backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
@@ -160,7 +160,7 @@ class MyApp extends StatelessWidget {
                             // Registrierungsprozess
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.black,
+                            backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
