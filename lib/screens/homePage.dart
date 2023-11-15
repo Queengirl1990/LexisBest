@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      backgroundColor: backgroundGrey,
+      backgroundColor: Colors.grey[200],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -49,8 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Meine Tiere',
               subText: '',
               height: 120,
-              avaImage: const CustomAppButton(),
-              futterImage: const SizedBox.shrink(),
               buttons: [
                 CustomImageButton(
                   icon: Icons.add,
@@ -83,8 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Wichtige Termine',
               subText: '',
               height: 120,
-              avaImage: const CustomAppButton(),
-              futterImage: const SizedBox.shrink(),
               buttons: [
                 CustomImageButton(
                   icon: Icons.add,
@@ -117,8 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Empfehlungen',
               subText: '',
               height: 120,
-              avaImage: const CustomAppButton(),
-              futterImage: const SizedBox.shrink(),
               buttons: [
                 CustomImageButton(
                   icon: Icons.add,
@@ -129,19 +123,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 CustomImageButton(
                   imagePath: 'assets/images/bettchen.png',
                   onPressed: () {
-                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                    // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
                 CustomImageButton(
                   imagePath: 'assets/images/kratzbaum.png',
                   onPressed: () {
-                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                    // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
                 CustomImageButton(
                   imagePath: 'assets/images/nagerhaus.png',
                   onPressed: () {
-                    // Hier die Funktion für den Empfehlung-Button hinzufügen
+                    // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
               ],
@@ -175,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         iconSize: 24.0,
-        selectedItemColor: lexiBrown,
+        selectedItemColor: Colors.brown,
       ),
     );
   }
@@ -185,16 +179,16 @@ class CustomStatusBox extends StatelessWidget {
   final String text;
   final String subText;
   final double height;
-  final Widget avaImage;
-  final Widget futterImage;
+  final Widget? avaImage;
+  final Widget? futterImage;
   final List<CustomImageButton> buttons;
 
   const CustomStatusBox({
     required this.text,
     required this.subText,
     required this.height,
-    required this.avaImage,
-    required this.futterImage,
+    this.avaImage,
+    this.futterImage,
     required this.buttons,
     Key? key,
   }) : super(key: key);
@@ -218,35 +212,39 @@ class CustomStatusBox extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                avaImage,
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            if (avaImage != null) ...[
+              Row(
+                children: [
+                  Column(
                     children: [
-                      Text(
-                        text,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        subText,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
+                      avaImage!,
+                      const SizedBox(height: 8),
+                      futterImage!,
                     ],
                   ),
+                  const SizedBox(width: 8),
+                ],
+              ),
+            ],
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
-                const SizedBox(width: 8),
-                futterImage,
+                Text(
+                  subText,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -256,36 +254,6 @@ class CustomStatusBox extends StatelessWidget {
                 children: buttons,
               ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomAppButton extends StatelessWidget {
-  const CustomAppButton({Key? key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: const Center(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
         ),
       ),
     );
