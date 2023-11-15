@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lexis_best_app/datenspeicher/styles.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,24 +13,24 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              height: 20.0, // Hier die gewünschte Höhe für den oberen Abstand einstellen
+              height: 20.0, 
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 40.0),
-                      Text(
+                      const SizedBox(height: 40.0),
+                      const Text(
                         'Willkommen',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24.0,
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Username',
@@ -39,11 +39,11 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       TextField(
                         obscureText: true,
                         decoration: InputDecoration(
@@ -53,11 +53,11 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -65,41 +65,41 @@ class MyApp extends StatelessWidget {
                             onTap: () {
                               // Hier Popup-Navigation für "Passwort vergessen" implementieren
                             },
-                            child: Text(
+                            child: const Text(
                               'Passwort vergessen',
                               style: TextStyle(color: lexiYellow),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10.0),
-                      Text(
+                      const SizedBox(height: 10.0),
+                      const Text(
                         'Login mit Google oder Apple ID',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 12.0,
                         ),
                       ),
-                      SizedBox(height: 10.0),
-                      Row(
+                      const SizedBox(height: 10.0),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(Icons.mail, size: 40.0),
                           ),
                           SizedBox(width: 100.0),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(Icons.apple, size: 40.0),
                           ),
                         ],
                       ),
-                      SizedBox(height: 15.0),
+                      const SizedBox(height: 15.0),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
-                            // Hier den Login-Prozess implementieren
+                            // Login-Prozess 
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
@@ -107,13 +107,13 @@ class MyApp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Login',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15.0),
+                      const SizedBox(height: 15.0),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Username',
@@ -122,11 +122,11 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       TextField(
                         obscureText: true,
                         decoration: InputDecoration(
@@ -136,11 +136,11 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Email',
@@ -149,11 +149,11 @@ class MyApp extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                         ),
-                        style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        style: const TextStyle(color: Colors.white, fontSize: 12.0),
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
@@ -165,13 +165,13 @@ class MyApp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Registrieren',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       Row(
                         children: [
                           Checkbox(
@@ -180,7 +180,7 @@ class MyApp extends StatelessWidget {
                               // Aktion der Checkbox
                             },
                           ),
-                          Text(
+                          const Text(
                             'Ich stimme den AGBs zu',
                             style: TextStyle(color: Colors.black, fontSize: 12.0),
                           ),
@@ -194,7 +194,7 @@ class MyApp extends StatelessWidget {
                               // Aktion implementieren
                             },
                           ),
-                          Text(
+                          const Text(
                             'Ich stimme der Datenschutzerklärung zu',
                             style: TextStyle(color: Colors.black, fontSize: 12.0),
                           ),
