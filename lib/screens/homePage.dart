@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lexis_best_app/datenspeicher/styles.dart';
 
 void main() => runApp(MyApp());
 
@@ -56,19 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Hier die Funktion für den Plus-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/oli.png',
                   onPressed: () {
                     // Hier die Funktion für den Oli-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/buddy.png',
                   onPressed: () {
                     // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/chrissy.png',
                   onPressed: () {
                     // Hier die Funktion für den Chrissy-Button hinzufügen
@@ -88,19 +87,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Hier die Funktion für den Plus-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/oli.png',
                   onPressed: () {
                     // Hier die Funktion für den Oli-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/buddy.png',
                   onPressed: () {
                     // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/chrissy.png',
                   onPressed: () {
                     // Hier die Funktion für den Chrissy-Button hinzufügen
@@ -120,19 +119,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Hier die Funktion für den Plus-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/bettchen.png',
                   onPressed: () {
                     // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/kratzbaum.png',
                   onPressed: () {
                     // Hier die Funktion für den Buddy-Button hinzufügen
                   },
                 ),
-                CustomImageButton(
+                CustomClickableImage(
                   imagePath: 'assets/images/nagerhaus.png',
                   onPressed: () {
                     // Hier die Funktion für den Buddy-Button hinzufügen
@@ -152,19 +151,19 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: lexiBrown),
+            icon: Icon(Icons.home, color: Colors.brown),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: lexiBrown),
+            icon: Icon(Icons.shopping_cart, color: Colors.brown),
             label: 'Einkaufsliste',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat, color: lexiBrown),
+            icon: Icon(Icons.chat, color: Colors.brown),
             label: 'Network',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: lexiBrown),
+            icon: Icon(Icons.person, color: Colors.brown),
             label: 'Profil',
           ),
         ],
@@ -181,7 +180,7 @@ class CustomStatusBox extends StatelessWidget {
   final double height;
   final Widget? avaImage;
   final Widget? futterImage;
-  final List<CustomImageButton> buttons;
+  final List<Widget> buttons;
 
   const CustomStatusBox({
     required this.text,
@@ -214,37 +213,44 @@ class CustomStatusBox extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (avaImage != null) ...[
-              Row(
-                children: [
+            Row(
+              children: [
+                if (avaImage != null)
                   Column(
                     children: [
                       avaImage!,
                       const SizedBox(height: 8),
+                    ],
+                  ),
+                if (avaImage != null) const SizedBox(width: 8), // Add this line for spacing
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        subText,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (futterImage != null)
+                  Column(
+                    children: [
+                      const SizedBox(height: 8),
                       futterImage!,
                     ],
                   ),
-                  const SizedBox(width: 8),
-                ],
-              ),
-            ],
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  subText,
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -261,44 +267,75 @@ class CustomStatusBox extends StatelessWidget {
 }
 
 class CustomImageButton extends StatelessWidget {
-  final IconData? icon;
-  final String? imagePath;
+  final IconData icon;
   final VoidCallback onPressed;
 
   const CustomImageButton({
     Key? key,
-    this.icon,
-    this.imagePath,
+    required this.icon,
     required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Icon(icon, color: Colors.black),
       ),
-      child: IconButton(
-        icon: icon != null
-            ? Icon(icon, color: Colors.black)
-            : Image.asset(
-                imagePath!,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.cover,
-              ),
-        onPressed: onPressed,
+    );
+  }
+}
+
+class CustomClickableImage extends StatelessWidget {
+  final String imagePath;
+  final VoidCallback onPressed;
+
+  const CustomClickableImage({
+    Key? key,
+    required this.imagePath,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Image.asset(
+          imagePath,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
