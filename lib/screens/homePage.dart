@@ -159,8 +159,6 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Profil',
           ),
         ],
-        iconSize: 24.0,
-        selectedItemColor: Colors.brown,
       ),
     );
   }
