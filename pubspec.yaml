@@ -68,7 +68,12 @@ flutter:
     - assets/images/chrissy.png
     - assets/images/bettchen.png
     - assets/images/kratzbaum.png
-    - assets/images/nagerhaus.png    
+    - assets/images/nagerhaus.png
+    - assets/images/pfote.png
+    - assets/images/Chat.png
+    - assets/images/Planner.png
+    - assets/images/ShoppingCart.png
+    - assets/images/User.png    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

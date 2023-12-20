@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: MyHomePage(),
     );
   }
@@ -51,27 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
               buttons: [
                 CustomImageButton(
                   icon: Icons.add,
-                  onPressed: () {
-                    // Hier die Funktion für den Plus-Button hinzufügen
-                  },
+                  onPressed: () {},
                 ),
                 CustomClickableImage(
                   imagePath: 'assets/images/oli.png',
-                  onPressed: () {
-                    // Hier die Funktion für den Oli-Button hinzufügen
-                  },
+                  onPressed: () {},
                 ),
                 CustomClickableImage(
                   imagePath: 'assets/images/buddy.png',
-                  onPressed: () {
-                    // Hier die Funktion für den Buddy-Button hinzufügen
-                  },
+                  onPressed: () {},
                 ),
                 CustomClickableImage(
                   imagePath: 'assets/images/chrissy.png',
-                  onPressed: () {
-                    // Hier die Funktion für den Chrissy-Button hinzufügen
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -111,30 +103,24 @@ class _MyHomePageState extends State<MyHomePage> {
             CustomStatusBox(
               text: 'Empfehlungen',
               subText: '',
-              height: 120,
+              height: 160, // Änderung der Höhe
               buttons: [
-                CustomImageButton(
-                  icon: Icons.add,
-                  onPressed: () {
-                    // Hier die Funktion für den Plus-Button hinzufügen
-                  },
-                ),
                 CustomClickableImage(
                   imagePath: 'assets/images/bettchen.png',
                   onPressed: () {
-                    // Hier die Funktion für den Buddy-Button hinzufügen
+                    // Hier die Funktion für den Bettchen-Button hinzufügen
                   },
                 ),
                 CustomClickableImage(
                   imagePath: 'assets/images/kratzbaum.png',
                   onPressed: () {
-                    // Hier die Funktion für den Buddy-Button hinzufügen
+                    // Hier die Funktion für den Kratzbaum-Button hinzufügen
                   },
                 ),
                 CustomClickableImage(
                   imagePath: 'assets/images/nagerhaus.png',
                   onPressed: () {
-                    // Hier die Funktion für den Buddy-Button hinzufügen
+                    // Hier die Funktion für den Nagerhaus-Button hinzufügen
                   },
                 ),
               ],
@@ -149,21 +135,27 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.brown),
+            icon: Image.asset('assets/images/pfote.png', width: 24, height: 24),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: Colors.brown),
+            icon:
+                Image.asset('assets/images/Planner.png', width: 24, height: 24),
+            label: 'Planner',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('assets/images/ShoppingCart.png',
+                width: 24, height: 24),
             label: 'Einkaufsliste',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat, color: Colors.brown),
+            icon: Image.asset('assets/images/Chat.png', width: 24, height: 24),
             label: 'Network',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.brown),
+            icon: Image.asset('assets/images/User.png', width: 24, height: 24),
             label: 'Profil',
           ),
         ],
@@ -222,7 +214,7 @@ class CustomStatusBox extends StatelessWidget {
                       const SizedBox(height: 8),
                     ],
                   ),
-                if (avaImage != null) const SizedBox(width: 8), // Add this line for spacing
+                if (avaImage != null) const SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -334,7 +326,7 @@ class CustomClickableImage extends StatelessWidget {
           imagePath,
           width: double.infinity,
           height: double.infinity,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
     );
