@@ -11,7 +11,7 @@ class MyDividerWithIcons extends StatelessWidget {
         SizedBox(
           width: 320,
           child: Divider(
-            color: backgroundGrey,
+            color: lexiBrown,
             height: 20,
             thickness: 2,
           ),
@@ -29,7 +29,7 @@ class MyDividerWithIcons extends StatelessWidget {
         SizedBox(
           width: 320,
           child: Divider(
-            color: backgroundGrey,
+            color: lexiBrown,
             height: 20,
             thickness: 2,
           ),

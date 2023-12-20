@@ -26,19 +26,11 @@ class MyCircularAvatar extends StatelessWidget {
     return Container(
       width: 100,
       height: 100,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 0),
-          ),
-        ],
       ),
-      child: ClipOval(
+      child: ClipRRect(
         child: Image.asset(
           'assets/images/ava.png',
           width: 100,
@@ -59,23 +51,36 @@ class MyProfilPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
-          backgroundColor: backGround,
+          backgroundColor: Colors.transparent,
           elevation: 0,
-          actions: const [],
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: lexiBrown),
+            onPressed: () {
+              // Aktion für Zurück-Navigation einbauen
+            },
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings, color: lexiBrown),
+              onPressed: () {
+                // Aktion für Einstellungs-Icon einbauen
+              },
+            ),
+          ],
           title: const Text(
             "Mein Profil",
             style: TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 24,
+              color: lexiBrown,
             ),
           ),
         ),
       ),
-      backgroundColor: backGround,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
               const MyCircularAvatar(),
@@ -86,45 +91,80 @@ class MyProfilPage extends StatelessWidget {
                   fontFamily: 'DancingScript',
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
-                  color: Colors.white,
+                  color: lexiBrown,
                 ),
               ),
               const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  // Aktion einbauen
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: lexiBrown,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 5,
-                ),
-                child: const Text(
-                  "Bearbeiten",
-                  style: TextStyle(
-                    color: backgroundGrey,
-                  ),
-                ),
-              ),
               const MyDividerWithIcons(),
-              const SizedBox(height: 10),
-              const Text(
-                "Deine Lieblinge",
-                style: TextStyle(
-                  fontFamily: 'DancingScript',
-                  fontWeight: FontWeight.normal,
-                  fontSize: 18,
-                  color: backgroundGrey,
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 320,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Drei Cards mit Bildern und Text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildAnimalCard('Oli', 'assets/images/oli.png'),
+                        _buildAnimalCard('Buddy', 'assets/images/buddy.png'),
+                        _buildAnimalCard(
+                            'Chrissy', 'assets/images/chrissy.png'),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    // Button "Neues Tier hinzufügen"
+                    ElevatedButton(
+                      onPressed: () {
+                        // Aktion für "Neues Tier hinzufügen" einbauen
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: lexiBrown,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 5,
+                      ),
+                      child: const Text(
+                        "Neues Tier hinzufügen",
+                        style: TextStyle(
+                          color: backgroundGrey,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 20,
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildAnimalCard(String name, String imagePath) {
+    return SizedBox(
+      width: 60,
+      height: 100,
+      child: Column(
+        children: [
+          Image.asset(
+            imagePath,
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            name,
+            style: const TextStyle(
+              color: lexiBrown,
+              fontSize: 12,
+            ),
+          ),
+        ],
       ),
     );
   }

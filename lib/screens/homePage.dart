@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lexis_best_app/widgets/navbar.dart';
 
 void main() => runApp(const MyApp());
 
@@ -128,37 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onTabTapped: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-        items: [
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/images/pfote.png', width: 24, height: 24),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon:
-                Image.asset('assets/images/Planner.png', width: 24, height: 24),
-            label: 'Planner',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/images/ShoppingCart.png',
-                width: 24, height: 24),
-            label: 'Einkaufsliste',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/images/Chat.png', width: 24, height: 24),
-            label: 'Network',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/images/User.png', width: 24, height: 24),
-            label: 'Profil',
-          ),
-        ],
+        currentIndex: _currentIndex,
       ),
     );
   }
