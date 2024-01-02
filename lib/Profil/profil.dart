@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lexis_best_app/datenspeicher/styles.dart';
 import 'package:lexis_best_app/widgets/divider.dart';
+import 'package:lexis_best_app/widgets/navbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//Profilbild
 class MyCircularAvatar extends StatelessWidget {
   const MyCircularAvatar({Key? key}) : super(key: key);
 
@@ -49,6 +51,7 @@ class MyProfilPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
+        //definition größe appbar
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           backgroundColor: Colors.transparent,
@@ -95,6 +98,24 @@ class MyProfilPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  // Aktion für Bearbeiten einbauen
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: lexiBrown,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 5,
+                ),
+                child: const Text(
+                  "Bearbeiten",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               const MyDividerWithIcons(),
               const SizedBox(height: 20),
               SizedBox(
@@ -140,6 +161,12 @@ class MyProfilPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onTabTapped: (index) {
+          // Hier die Aktion für Tab-Tapped einbauen
+        },
+        currentIndex: 0, // Setze den aktuellen Index entsprechend
       ),
     );
   }

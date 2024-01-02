@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            //Nutzerfenster mit allen wichtigen Infos
             CustomStatusBox(
               text: 'Hallo Olivia!',
               subText: 'Oli, Buddy & Chrissy',
@@ -45,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               buttons: const [],
             ),
             const SizedBox(height: 16),
+            //Container mit der Übersicht der Tiere
             CustomStatusBox(
               text: 'Meine Tiere',
               subText: '',
@@ -69,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 16),
+            //Container für Kalender - Erinnerungen
             CustomStatusBox(
               text: 'Wichtige Termine',
               subText: '',
@@ -101,10 +104,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 16),
+            //Werbung bzw Empfehlungen
             CustomStatusBox(
               text: 'Empfehlungen',
               subText: '',
-              height: 160, // Änderung der Höhe
+              height: 160,
               buttons: [
                 CustomClickableImage(
                   imagePath: 'assets/images/bettchen.png',
@@ -141,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+//todo noch auslagern
 class CustomStatusBox extends StatelessWidget {
   final String text;
   final String subText;
@@ -159,6 +164,7 @@ class CustomStatusBox extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+//definieren der Container Designs
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -232,6 +238,8 @@ class CustomStatusBox extends StatelessWidget {
     );
   }
 }
+
+//können auch noch ausgelagert werden
 
 class CustomImageButton extends StatelessWidget {
   final IconData icon;
